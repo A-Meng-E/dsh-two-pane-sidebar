@@ -40,8 +40,8 @@ Pick one. All three go through the Host's plugin manager, which writes the profi
 `pnpm add`, and applies the bundle patch.
 
 ```bash
-# 1. registry (once published)
-plugin_manager install_bundle target=@A-Meng-E/dsh-two-pane-sidebar@0.2.0
+# 1. registry — not on npm yet, the name is reserved for a future release:
+#    plugin_manager install_bundle target=@a-meng-e/dsh-two-pane-sidebar@0.2.0
 
 # 2. release tarball — no npm account, a fixed immutable artifact
 plugin_manager install_bundle target=https://github.com/A-Meng-E/dsh-two-pane-sidebar/releases/download/v0.2.0/dsh-two-pane-sidebar-0.2.0.tgz
