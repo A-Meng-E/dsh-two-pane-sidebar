@@ -1,0 +1,46 @@
+name: release
+
+# Pushing a v* tag packs the plugin and attaches the tarball to a GitHub Release,
+# which gives every version a stable, immutable install URL:
+#   https://github.com/<owner>/<repo>/releases/download/v<X>/dsh-two-pane-sidebar-<X>.tgz
+#
+# Only first-party actions are used (checkout + the runner's preinstalled node and
+# gh), so the workflow adds no third-party supply chain of its own.
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The tarball name comes from package.json while the release tag comes from
+      # the ref, so a forgotten version bump would publish a mislabelled asset.
+      - name: Check the tag matches the manifest version
+        run: |
+          set -euo pipefail
+          version="$(node -p "require('./package.json').version")"
+          echo "package.json: $version / tag: $GITHUB_REF_NAME"
+          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::tag $GITHUB_REF_NAME does not match package.json version $version"
+            exit 1
+          fi
+
+      - name: Pack
+        run: npm pack
+
+      - name: Attach the tarball to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release create "$GITHUB_REF_NAME" ./*.tgz \
+            --title "$GITHUB_REF_NAME" \
+            --generate-notes
