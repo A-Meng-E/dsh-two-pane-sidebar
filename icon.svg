@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Two-pane sidebar">
+  <rect x="6" y="10" width="14" height="44" rx="4" fill="#5b8def"/>
+  <rect x="24" y="10" width="34" height="44" rx="4" fill="#9db8f0"/>
+  <rect x="29" y="17" width="24" height="4" rx="2" fill="#ffffff" opacity="0.85"/>
+  <rect x="29" y="26" width="18" height="4" rx="2" fill="#ffffff" opacity="0.65"/>
+  <rect x="29" y="35" width="21" height="4" rx="2" fill="#ffffff" opacity="0.65"/>
+  <rect x="11" y="17" width="4" height="4" rx="1" fill="#ffffff" opacity="0.9"/>
+  <rect x="11" y="26" width="4" height="4" rx="1" fill="#ffffff" opacity="0.7"/>
+  <rect x="11" y="35" width="4" height="4" rx="1" fill="#ffffff" opacity="0.7"/>
+</svg>

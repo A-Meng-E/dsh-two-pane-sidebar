@@ -1,0 +1,53 @@
+{
+  "name": "dsh-two-pane-sidebar",
+  "version": "0.2.0",
+  "type": "module",
+  "description": "Moves the plugin navigation into a persistent rail left of the sidebar, leaving sessions and workspaces in the main column.",
+  "license": "MIT",
+  "author": "A-Meng-E",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "dsh-plugin",
+    "sidebar",
+    "layout"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A-Meng-E/dsh-two-pane-sidebar.git"
+  },
+  "homepage": "https://github.com/A-Meng-E/dsh-two-pane-sidebar#readme",
+  "bugs": {
+    "url": "https://github.com/A-Meng-E/dsh-two-pane-sidebar/issues"
+  },
+  "engines": {
+    "dsh": ">=0.2.1-rc.2 <0.3.0"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg"
+  ],
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-workspace",
+        "@deepseek-ai/dsh-client-shortcuts",
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  }
+}

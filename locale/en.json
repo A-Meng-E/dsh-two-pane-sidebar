@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Plugin Rail",
+    "description": "Moves the plugin navigation into a persistent rail left of the sidebar, leaving sessions and workspaces in the main column."
+  }
+}
